@@ -2,7 +2,6 @@ package utils
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import utils.ParseHelper
 
 class ParseHelperTest extends AnyFlatSpec with should.Matchers {
 
@@ -48,19 +47,19 @@ class ParseHelperTest extends AnyFlatSpec with should.Matchers {
 
   it should "throw an error if it is not a csv or tsv line" in {
     val line = "10;15"
-    a [IllegalArgumentException] should be thrownBy (ParseHelper.splitLine(line))
+    a [IllegalArgumentException] should be thrownBy ParseHelper.splitLine(line)
   }
 
   it should "throw an error if it is an empty line" in {
     val line = ""
-    a [IllegalArgumentException] should be thrownBy (ParseHelper.splitLine(line))
+    a [IllegalArgumentException] should be thrownBy ParseHelper.splitLine(line)
   }
 
   it should "throw an error if the one of the values is not number" in {
-    a [NumberFormatException] should be thrownBy (ParseHelper.splitLine("10,abc"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.splitLine("abc,abc"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.splitLine("10\tabc"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.splitLine("abc\t10"))
+    a [NumberFormatException] should be thrownBy ParseHelper.splitLine("10,abc")
+    a [NumberFormatException] should be thrownBy ParseHelper.splitLine("abc,abc")
+    a [NumberFormatException] should be thrownBy ParseHelper.splitLine("10\tabc")
+    a [NumberFormatException] should be thrownBy ParseHelper.splitLine("abc\t10")
   }
 
   "The integer parse method" should "parse correctly integer numbers, even with space before or after" in {
@@ -72,10 +71,10 @@ class ParseHelperTest extends AnyFlatSpec with should.Matchers {
     ParseHelper.intOrZero("    ") should be(0)
   }
   it should "throw an error if the string content is not a integer number" in {
-    a [NumberFormatException] should be thrownBy (ParseHelper.intOrZero("a"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.intOrZero("a b"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.intOrZero("15b"))
-    a [NumberFormatException] should be thrownBy (ParseHelper.intOrZero("1.75"))
+    a [NumberFormatException] should be thrownBy ParseHelper.intOrZero("a")
+    a [NumberFormatException] should be thrownBy ParseHelper.intOrZero("a b")
+    a [NumberFormatException] should be thrownBy ParseHelper.intOrZero("15b")
+    a [NumberFormatException] should be thrownBy ParseHelper.intOrZero("1.75")
   }
 
 }

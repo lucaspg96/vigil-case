@@ -1,7 +1,7 @@
 package s3
 
 import com.amazonaws.auth.profile.ProfileCredentialsProvider
-import com.amazonaws.auth.{AWSCredentials, AWSCredentialsProvider, DefaultAWSCredentialsProviderChain}
+import com.amazonaws.auth.{AWSCredentials, AWSCredentialsProvider}
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
 import com.amazonaws.services.s3.model.{Bucket, ListObjectsRequest, S3Object}
 import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
@@ -15,7 +15,7 @@ import scala.jdk.CollectionConverters._
  * provide easy access to AWS credentials
  *
  * @param credentialsPath path to credentials file
- * @param profileName name of the profile that is goin to be used
+ * @param profileName name of the profile that is going to be used
  * @param region region name
  * @param endpointURL S3 endpoint, used when pointing to MinIO
  * @param enablePathStyle path style access flag
@@ -28,7 +28,7 @@ class S3ClientHelper(
                       val enablePathStyle: Boolean = true,
                     ) {
 
-  // The AWS profile with the curedentials
+  // The AWS profile with the credentials
   private val profile: AWSCredentialsProvider = new ProfileCredentialsProvider(credentialsPath, profileName)
 
   // If no endpoint is provided, we set the default S3 one
