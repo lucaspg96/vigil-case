@@ -2,6 +2,9 @@ import s3.S3ClientHelper
 
 import java.io.File
 
+/***
+ * This class is used to lead the sample files to the running MinIO instance, using the sample credentials
+ */
 object LoadFilesToS3 extends App {
 
   val s3Client: S3ClientHelper = new S3ClientHelper("src/main/resources/aws-credentials", endpointURL = Some("http://localhost:9000"))
