@@ -66,6 +66,7 @@ object Solution1 extends App {
         // Counting the occurrences of each value for each key
         values.groupBy(identity).view.mapValues(_.size).toMap
           // looking for the first one (if exists) that appears an odd number of times
+          // if there is more the one, only the first will be returned (the challenge said that it would not happen)
           .find(_._2 % 2 == 1)
       })
       .collect{

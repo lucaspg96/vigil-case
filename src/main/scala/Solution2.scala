@@ -71,6 +71,7 @@ object Solution2 {
     val processedDf = valuesDf.groupBy("key", "value")
       .count()
       // then, we filter by the ones with an odd count
+      // if there is more the one, all will be returned (the challenge said that it would not happen)
       .filter((col("count") % 2) === 1)
       // at last, we drop the temporary count column
       .drop("count")
