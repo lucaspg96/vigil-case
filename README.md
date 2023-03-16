@@ -88,6 +88,22 @@ I needed to test them separately.
 The solution is implemented at [Solution2](src/main/scala/Solution2.scala) and the tests at
 [Solution2Tests](src/test/scala/Solution2Test.scala).
 
+### Brief discussion about the solutions
+
+The main differences between the solutions are the APIs used: RDD vs DataFrame. RDDs are a lower level
+representation of the data, using Scala objects. It provides an easy and efficient way to process the data,
+accepting structured and non-structured data. It also provides type safety at compile time, allowing some 
+errors being caught sooner. However, it has no optimization engine for its operations.
+
+The DataFrame provides a higher level of representation, organizing the data into named columns, similar to a
+table on relational databases. It can also provide a schema to represent the data. This also allows data to be
+easily loaded from known formats, like csv, json, database tables, etc. However, it does not provide type safety
+at compile time, but it uses the Catalyst optimization engine to its transformations.
+
+This challenge seems to be efficiently solved by both approaches. However, due the grouping operations, Dataframes
+may perform slightly better that RDDs, but I cannot be certain of it, since RDDs use partitioning technics to
+optimize the data spread along the cluster.
+
 ## The tests
 
 I focused the tests implementations on the algorithm's steps. There are no tests for S3 communication.
