@@ -4,15 +4,16 @@ import spark.SparkHelper
 import utils.ParseHelper
 
 /***
- * This solution was developed using the RDD api from Spark.
- * I started with this one because the way that we manipulate the data is more
- * similar to day-to-day Scala data structures, so a first solution could be developed
- * faster.
- *
- * However, it has a drawback: this implementation gets the amazon S3 objects input streams
- * and persists the content in memory. That is not a good approach for big data scenarios and
- * could be resolved by using Spark (non structured) stream API or even by persisting the files
- * into the local storage. But, since the goal here is the data processing algorithm, I abstracted that problem.
+ * This solution was developed using the RDD API from Spark.
+I started with this one because the way that we manipulate the data is more
+similar to day-to-day Scala data structures, so a first solution could be developed
+faster. The data is processed using some basic scala functions and the grouping and
+counting are made using Map-Reduce.
+
+However, it has a drawback: this implementation gets the amazon S3 objects input streams
+and persists the content in memory. That is not a good approach for big data scenarios and
+could be resolved by using Spark (non-structured) stream API or even by persisting the files
+into the local storage and loading them into the RDD. But, since the goal here is the data processing algorithm, I abstracted that problem.
  */
 object Solution1 extends App {
 

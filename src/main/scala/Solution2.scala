@@ -4,14 +4,15 @@ import s3.S3ClientHelper
 import spark.SparkHelper
 
 /***
- * This solution was developed using the DataFrame api from Spark.
- * Since I got some time left from the first solution, I wanted to try the DataFrame api.
- * It has been a while since I used this, then I am kinda rusty. However, this API is
- * more efficient and I thought that I needed to present a solution using it.
- *
- * For this solution I needed to use the main method instead of inheriting from App.
- * That is because I defined some operations over the dataframe using regex and
- * I needed to test them separately.
+ * This solution was developed using the DataFrame API from Spark.
+Since I got some time left from the first solution, I wanted to try the DataFrame API.
+It has been a while since I used this, then I am kinda rusty. However, this API is
+more efficient, and I thought that I needed to present a solution using it. The whole pipeline
+is made using column transformations, no udf (*user-defined function*) was used.
+
+For this solution, I needed to use the main method instead of inheriting from App.
+That is because I defined some operations over the dataframe using regex, and
+I needed to test them separately.
  */
 object Solution2 {
 
