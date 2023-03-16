@@ -49,7 +49,7 @@ class S3ClientHelper(
 
   def getObject(bucketName: String, path: String): S3Object = s3Client.getObject(bucketName,path)
 
-  def getObjectsAsIterable(bucketName: String, path: String): Iterable[String] = {
+  def getObjectsContentAsIterable(bucketName: String, path: String): Iterable[String] = {
     val objects = listObjectsByPrefix(bucketName, path)
     objects.map(getObject(bucketName,_).getObjectContent)
       .flatMap(Source.fromInputStream(_).getLines())

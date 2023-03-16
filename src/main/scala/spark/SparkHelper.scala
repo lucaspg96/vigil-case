@@ -39,15 +39,15 @@ object SparkHelper {
       .text(path)
   }
 
-  def saveRddAsTSV(rdd: RDD[(Int,Int)], bucketName: String, outputFolder: String = "output"): Unit = {
-    saveDfAsTSV(
+  def saveRddAsTSVOnS3(rdd: RDD[(Int,Int)], bucketName: String, outputFolder: String = "output"): Unit = {
+    saveDfAsTSVOnS3(
       session.createDataFrame(rdd)
         .withColumnRenamed("_1","key")
         .withColumnRenamed("_2","value"),
       bucketName, outputFolder)
   }
 
-  def saveDfAsTSV(df: DataFrame, bucketName: String, outputFolder: String = "output"): Unit = {
+  def saveDfAsTSVOnS3(df: DataFrame, bucketName: String, outputFolder: String = "output"): Unit = {
     df.repartition(1)
       .write
       .option("sep","\t")
