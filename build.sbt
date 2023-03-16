@@ -9,13 +9,16 @@ lazy val root = (project in file("."))
   .settings(
     name := "vigil-case",
     libraryDependencies ++= Seq (
-//      "com.amazonaws" % "aws-java-sdk" % "1.11.698",
+      // base spark dependencies
       "org.apache.spark" %% "spark-core" % sparkVersion,
       "org.apache.spark" %% "spark-sql" % sparkVersion,
+
+      // hadoop dependencies to enable S3 filesystem
       "org.apache.hadoop" % "hadoop-common" % hadoopVersion,
       "org.apache.hadoop" % "hadoop-client" % hadoopVersion,
       "org.apache.hadoop" % "hadoop-aws" % hadoopVersion,
+
+      // test lib
       "org.scalatest" %% "scalatest" % "3.2.15" % Test,
-      "org.mockito" %% "mockito-scala" % "1.17.12" % Test
     )
   )

@@ -3,6 +3,10 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 import spark.SparkHelper
 
+/***
+ * This test suite is testing the DataFrame solution. It not only apply all the pre-defined solution tests,
+ * but also tests the operations responsible to fill replace the empty strings with 0's.
+ */
 class Solution2Test extends AnyFlatSpec
   with should.Matchers
   with SolutionTest {

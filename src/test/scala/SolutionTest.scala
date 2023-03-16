@@ -1,6 +1,16 @@
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 
+/***
+ * This trait is responsible for defining the test cases to validate the problem solution,
+ * regardless of the implementation that is going to be tested (RDD or DataFrame).
+ *
+ * To test a solution, we just need to inherit this trait and provide two implementations:
+ *  - the "solutionName", so we can identify which solution is being tested
+ *  - the way that the solution will be executed, given the lines as an input
+ *
+ *  If it is necessary, each solution test suite can add more tests to particular functions
+ */
 trait SolutionTest extends AnyFlatSpec
   with should.Matchers
   with TestFiles{
@@ -38,7 +48,6 @@ trait SolutionTest extends AnyFlatSpec
 
   it should "work properly with csv file with missing values" in {
     val result = runSolution(csvFileWithMissing)
-    println(result.mkString("\n"))
     result.length should be (2)
     result should contain (0,0)
     result should contain (3,0)

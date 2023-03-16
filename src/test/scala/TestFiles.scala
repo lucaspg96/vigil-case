@@ -1,3 +1,7 @@
+
+/***
+ * This trait was created to centralize the sample file content to be used on the test cases
+ */
 trait TestFiles {
 
   val csvFile: Iterable[String] =
